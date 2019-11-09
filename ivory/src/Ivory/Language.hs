@@ -190,6 +190,8 @@ module Ivory.Language (
   , defStruct
   , defStringType
   , defMemArea, defConstMemArea
+  , AST.AreaAttribute(..)
+  , setAreaAttributes, setMemAreaAttributes
   , private, public
 
     -- * Quasiquoters

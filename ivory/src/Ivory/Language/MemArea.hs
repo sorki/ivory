@@ -86,19 +86,27 @@ memSym m = case m of
 -- | Create an area from an auxillary binding.
 bindingArea :: Bool -> Binding -> I.Area
 bindingArea isConst b = I.Area
-  { I.areaSym   = bindingSym b
-  , I.areaConst = isConst
-  , I.areaType  = bindingType b
-  , I.areaInit  = bindingInit b
+  { I.areaSym     = bindingSym b
+  , I.areaConst   = isConst
+  , I.areaType    = bindingType b
+  , I.areaInit    = bindingInit b
+  , I.areaAttrs   = []
   }
 
 makeArea :: I.Sym -> Bool -> I.Type -> I.Init -> I.Area
 makeArea sym isConst ty ini = I.Area
-  { I.areaSym   = sym
-  , I.areaConst = isConst
-  , I.areaType  = ty
-  , I.areaInit  = ini
+  { I.areaSym     = sym
+  , I.areaConst   = isConst
+  , I.areaType    = ty
+  , I.areaInit    = ini
+  , I.areaAttrs   = []
   }
+
+setAreaAttributes :: [I.AreaAttribute] -> I.Area -> I.Area
+setAreaAttributes attrs area = area { I.areaAttrs = attrs }
+
+setMemAreaAttributes :: [I.AreaAttribute] -> MemArea area -> MemArea area
+setMemAreaAttributes attrs (MemArea a1 as) = MemArea (setAreaAttributes attrs a1) as
 
 -- | Define a global constant. Requires an IvoryZero constraint to ensure the
 -- area has an initializers, but does not explicilty initialize to 0 so that the

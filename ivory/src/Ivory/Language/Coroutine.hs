@@ -174,7 +174,7 @@ coroutine name (CoroutineBody fromYield) = Coroutine { .. }
   strTy = AST.TyStruct strName
 
   -- | Area for the continuation struct instance:
-  contArea = AST.Area (name ++ "_cont") False strTy AST.InitZero
+  contArea = AST.Area (name ++ "_cont") False strTy AST.InitZero []
 
   coroutineName = name
 

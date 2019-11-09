@@ -130,12 +130,21 @@ structName def = case def of
 -- Global Memory Areas ---------------------------------------------------------
 
 data Area = Area
-  { areaSym   :: Sym
-  , areaConst :: Bool
-  , areaType  :: Type
-  , areaInit  :: Init
+  { areaSym     :: Sym
+  , areaConst   :: Bool
+  , areaType    :: Type
+  , areaInit    :: Init
+  , areaAttrs   :: [AreaAttribute]
   } deriving (Show, Eq, Ord)
 
+-- Extra attributes for Area ---------------------------------------------------
+
+data AreaAttribute =
+  -- Used by Gen/C to generete __attribute__
+    NoInit
+  | Packed
+  | Section String
+  deriving (Show, Eq, Ord)
 
 -- Imported Memory Areas -------------------------------------------------------
 
@@ -456,7 +465,7 @@ data Init
 -- TH Lifting ------------------------------------------------------------------
 
 deriveLiftMany
-  [ ''Module, ''Visible, ''AreaImport, ''Area, ''Struct
+  [ ''Module, ''Visible, ''AreaImport, ''Area, ''AreaAttribute, ''Struct
   , ''Import
   , ''Extern
   , ''Proc, ''Ensure, ''Require, ''Cond

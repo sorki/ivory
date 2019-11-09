@@ -59,8 +59,14 @@ extractAreaProto visibility area = do
       ty | I.areaConst area = [cty| const $ty:aty |]
          | otherwise        = aty
   if visibility == Public
-    then putHdrSrc [cedecl| extern $ty:ty $id:(I.areaSym area); |]
+    then case I.areaAttrs area of
+      []    -> putHdrSrc [cedecl| extern $ty:ty $id:(I.areaSym area); |]
+      attrs -> putHdrSrc [cedecl| extern $ty:ty $id:(I.areaSym area) __attribute__(($attrs:(map toAttr attrs))); |]
     else putSrc    [cedecl| static $ty:ty $id:(I.areaSym area); |]
+  where
+    toAttr (I.Section s) = [cattr| section($string:(s)) |]
+    toAttr I.NoInit      = [cattr| noinit |]
+    toAttr I.Packed      = [cattr| packed |]
 
 -- | Compile a memory area definition into an extern in the header, and a
 -- structure in the source.

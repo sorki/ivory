@@ -57,9 +57,10 @@ modelCheckProc mods p = do
 --------------------------------------------------------------------------------
 
 toArea :: I.Area -> ModelCheck ()
-toArea I.Area { I.areaSym  = sym
-              , I.areaType = ty
-              , I.areaInit = init
+toArea I.Area { I.areaSym   = sym
+              , I.areaType  = ty
+              , I.areaInit  = init
+              , I.areaAttrs = []
               }
   = void $ addEnvVar ty sym
 

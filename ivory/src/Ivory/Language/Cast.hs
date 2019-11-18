@@ -183,6 +183,9 @@ instance SafeCast IFloat IDouble
 -- IDouble.
 instance SafeCast IDouble IDouble where
   safeCast     = id
+-- we can downcast from double to float relatively safely
+-- with just a loss of precision
+instance SafeCast IDouble IFloat
 
 -- IChar.
 instance SafeCast IChar IChar     where

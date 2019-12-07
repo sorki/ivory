@@ -66,6 +66,8 @@ module Ivory.Artifact (
   , putArtifact
   -- | like `putArtifact` but ignores any errors.
   , putArtifact_
+  -- | Perform an action with artifacts contents
+  , withContents
 
   -- | Takes an `Artifact` and prints it, or an appropriate error message, to
   -- stdout.

@@ -156,7 +156,11 @@ fromOpExp env op args = case op of
   getArg i    = toExp env (args !! i)
   mkArg       = Just . getArg
   mkInfix op' = InfixE (mkArg 0) (VarE op') (mkArg 1)
+#if MIN_VERSION_template_haskell(2,15,0)
+  mkTert  op' = InfixE (mkArg 0) (VarE op') (Just $ TupE $ map Just [getArg 1, getArg 2])
+#else
   mkTert  op' = InfixE (mkArg 0) (VarE op') (Just $ TupE [getArg 1, getArg 2])
+#endif
   mkUn    op' = AppE (VarE op') (getArg 0)
   mkBin   op' = AppE (AppE (VarE op') (getArg 0)) (getArg 1)
 

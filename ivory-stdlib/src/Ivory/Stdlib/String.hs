@@ -9,12 +9,15 @@
 --
 
 module Ivory.Stdlib.String
-  ( stdlibStringModule, stringInit, istr_eq, sz_from_istr, istr_len
+  ( stdlibStringModule
+  , stringInit
+  , stringInitFromHex
+  , istr_eq, sz_from_istr, istr_len
   , istr_from_sz, istr_copy, string_lit_store
   , stdlibStringArtifacts, string_lit_array
   ) where
 
-import Data.Char (ord)
+import Data.Char (ord, toLower)
 
 import Ivory.Language
 import Ivory.Language.Array (IxRep)
@@ -49,6 +52,36 @@ stringInit xs
   l_data = stringDataL
   len = toInteger (length xs)
   nat = arrayLen (undefinedRef l_data)
+
+-- | Initialize string from its hexadecimal representation
+stringInitFromHex :: IvoryString str => String -> Init str
+stringInitFromHex str = istruct [
+    stringDataL .= iarray ( map (ival . fromIntegral) ( transpose ( map toLower str )))
+  , stringLengthL .= ival ( fromIntegral ( length str `div` 2 ))
+  ]
+  where
+    transpose [] = []
+    transpose (h:l:xs) = ((hexVal h) * 16 + (hexVal l)):(transpose xs)
+    transpose _ = error "Odd number of characters"
+
+    hexVal :: Char -> Int
+    hexVal '0' = 0
+    hexVal '1' = 1
+    hexVal '2' = 2
+    hexVal '3' = 3
+    hexVal '4' = 4
+    hexVal '5' = 5
+    hexVal '6' = 6
+    hexVal '7' = 7
+    hexVal '8' = 8
+    hexVal '9' = 9
+    hexVal 'a' = 10
+    hexVal 'b' = 11
+    hexVal 'c' = 12
+    hexVal 'd' = 13
+    hexVal 'e' = 14
+    hexVal 'f' = 15
+    hexVal x = error $ "Invalid hex character: " ++ [x]
 
 -- | Store a constant string into an `IvoryString`. Error returned if the
 -- `String` is too large.

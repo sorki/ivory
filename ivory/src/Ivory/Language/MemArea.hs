@@ -7,9 +7,6 @@
 
 module Ivory.Language.MemArea where
 
-import Prelude ()
-import Prelude.Compat
-
 import Ivory.Language.Area
 import Ivory.Language.Init
 import Ivory.Language.Proxy

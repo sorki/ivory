@@ -6,13 +6,7 @@
 
 module Ivory.Language.Module where
 
-import           Prelude                ()
-import           Prelude.Compat
-
 import           Data.List              (nub)
-#if !MIN_VERSION_base(4,11,0)
-import           Data.Semigroup         (Semigroup(..))
-#endif
 
 import           Ivory.Language.Area    (IvoryArea)
 import           Ivory.Language.MemArea (ConstMemArea (..), MemArea (..))

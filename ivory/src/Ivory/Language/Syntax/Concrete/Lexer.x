@@ -15,9 +15,6 @@
 
 module Ivory.Language.Syntax.Concrete.Lexer where
 
-import Prelude ()
-import Prelude.Compat
-
 import Data.Char (ord)
 import Data.Word (Word8)
 import Data.Bits (shiftR,(.&.))

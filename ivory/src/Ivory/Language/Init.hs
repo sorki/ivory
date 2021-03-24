@@ -9,12 +9,6 @@
 
 module Ivory.Language.Init where
 
-import           Prelude                ()
-import           Prelude.Compat
-#if !MIN_VERSION_base(4,11,0)
-import           Data.Semigroup         (Semigroup(..))
-#endif
-
 import           Ivory.Language.Area
 import           Ivory.Language.Array
 import qualified Ivory.Language.Effects as E

@@ -42,12 +42,6 @@ module Ivory.Language.Monad (
   , withLocation
   ) where
 
-import Prelude ()
-import Prelude.Compat
-#if !MIN_VERSION_base(4,11,0)
-import Data.Semigroup (Semigroup(..))
-#endif
-
 import qualified Ivory.Language.Effects as E
 import Ivory.Language.Proxy
 import Ivory.Language.Type

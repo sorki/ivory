@@ -8,9 +8,6 @@
 module Ivory.Language.Syntax.Concrete.ParseAST where
 
 import           Data.List                               (foldl')
-import           Prelude                                 ()
-import           Prelude.Compat                          hiding (init)
-
 import           Ivory.Language.Syntax.Concrete.Location
 
 --------------------------------------------------------------------------------
@@ -493,11 +490,11 @@ instance HasLocation AllocRef where
   stripLoc a = case a of
     AllocBase v e      -> AllocBase   v (stripLoc e)
     AllocArr v es      -> AllocArr    v (stripLoc es)
-    AllocStruct v init -> AllocStruct v (stripLoc init)
+    AllocStruct v ini -> AllocStruct v (stripLoc ini)
 
 instance HasLocation StructInit where
   getLoc _ = mempty
-  stripLoc init = case init of
+  stripLoc ini = case ini of
     Empty             -> Empty
     MacroInit (fn,es) -> MacroInit (fn, map stripLoc es)
     FieldInits fs     -> FieldInits (map (\(n,e) -> (n, stripLoc e)) fs)

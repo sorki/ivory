@@ -12,8 +12,7 @@
 
 module Ivory.Language.Syntax.Concrete.Location where
 
-import Prelude ()
-import Prelude.Compat
+import Prelude
 
 import Control.Monad (mplus)
 import Data.Function (on)

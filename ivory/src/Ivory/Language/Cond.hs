@@ -6,9 +6,6 @@
 
 module Ivory.Language.Cond where
 
-import Prelude ()
-import Prelude.Compat
-
 import Ivory.Language.Area
 import Ivory.Language.IBool
 import Ivory.Language.Monad

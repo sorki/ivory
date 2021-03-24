@@ -4,9 +4,6 @@
 
 module Ivory.Language.Syntax.AST where
 
-import           Prelude                                 ()
-import           Prelude.Compat
-
 import           Ivory.Language.Syntax.Concrete.Location
 import           Ivory.Language.Syntax.Names
 import           Ivory.Language.Syntax.Type

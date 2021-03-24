@@ -17,9 +17,8 @@ module Ivory.Language.Syntax.Concrete.QQ.ExprQQ
   , toAddrOf
   ) where
 
-import           Prelude ()
-import           Prelude.Compat hiding (exp, init)
-import qualified Prelude.Compat as P
+import           Prelude hiding (exp, init)
+import qualified Prelude
 
 import           Language.Haskell.TH       hiding (Stmt, Exp, Type)
 import qualified Language.Haskell.TH as T
@@ -104,7 +103,7 @@ fromOpExp env op args = case op of
   EucDivOp         -> mkInfix '(I../)   -- Euclidean division
   ModOp            -> mkInfix '(I..%)  -- Euclidean modulo
 
-  FExpOp           -> mkUn 'P.exp
+  FExpOp           -> mkUn 'Prelude.exp
   FSqrtOp          -> mkUn 'sqrt
   FLogOp           -> mkUn 'log
   FPowOp           -> mkInfix '(**)

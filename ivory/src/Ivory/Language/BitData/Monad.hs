@@ -12,9 +12,6 @@
 
 module Ivory.Language.BitData.Monad where
 
-import Prelude ()
-import Prelude.Compat
-
 import           Data.List (intercalate)
 import qualified MonadLib as M
 

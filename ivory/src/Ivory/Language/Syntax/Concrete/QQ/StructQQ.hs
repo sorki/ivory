@@ -9,9 +9,6 @@ module Ivory.Language.Syntax.Concrete.QQ.StructQQ
   ( fromStruct
   ) where
 
-import           Prelude                                  ()
-import           Prelude.Compat
-
 import qualified Ivory.Language.Area                      as A
 import           Ivory.Language.Proxy
 import qualified Ivory.Language.String                    as S

@@ -32,9 +32,6 @@ module Ivory.Language.Coroutine (
   Coroutine(..), CoroutineBody(..), coroutine,
   ) where
 
-import           Prelude                ()
-import           Prelude.Compat
-
 import           Control.Monad          (unless, when)
 import           Control.Monad.Fix      (mfix)
 import qualified Data.DList             as D

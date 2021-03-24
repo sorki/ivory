@@ -37,8 +37,7 @@ module Ivory.Language.Syntax.Concrete.QQ.Common
   , lnPragma
   ) where
 
-import Prelude ()
-import Prelude.Compat hiding (exp)
+import Prelude hiding (exp)
 
 import           Language.Haskell.TH       hiding (Stmt, Exp, Type)
 import           Language.Haskell.TH.Datatype (pragLineDCompat)

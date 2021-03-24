@@ -1,0 +1,13 @@
+packages:
+  ./ivory/*.cabal
+  ./ivory-artifact/*.cabal
+  ./ivory-backend-acl2/*.cabal
+  ./ivory-backend-c/*.cabal
+  ./ivory-eval/*.cabal
+  ./ivory-hw/*.cabal
+  ./ivory-model-check/*.cabal
+  ./ivory-opts/*.cabal
+  ./ivory-quickcheck/*.cabal
+  ./ivory-serialize/*.cabal
+  ./ivory-stdlib/*.cabal
+  ./ivory-tasty/*.cabal

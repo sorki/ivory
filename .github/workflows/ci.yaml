@@ -13,6 +13,9 @@ jobs:
         with:
           key: "${{ runner.os }}-${{ matrix.ghc }}-cabal"
           path: "${{ steps.setup-haskell-cabal.outputs.cabal-store }}"
+
+      - name: System dependencies
+        run: sudo apt install cvc4
       - name: Install dependencies
         run: |
           cabal update
